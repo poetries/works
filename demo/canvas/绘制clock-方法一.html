@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制时钟</title>
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			#canvas {
+				display: block;
+				margin: auto;
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--注意：canvas宽高需要设置在标签中 否则绘制的东西可能出错-->
+		<canvas id="canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d"); //绘图环境
+			var w = canvas.width;
+			var h = canvas.height;
+			
+			
+			 
+		function clock(){
+			ctx.clearRect(0,0,w,h);
+			//获取时间
+			
+			var now = new Date();
+			var hour = now.getHours();
+			var min = now.getMinutes();
+			var sec = now.getSeconds();
+			min = min + sec/60;
+			hour = hour + min/60;
+			
+			//分刻度
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = "#000"
+			for(var i = 0;i < 60;i++){ //360/60 = 6度
+				ctx.beginPath();
+				ctx.moveTo(w/2,h/2);//移动到中心点
+				ctx.arc(w/2,h/2,200,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			//绘制白色的圆覆盖前面的
+			ctx.fillStyle = "#fff";
+			ctx.beginPath();
+			ctx.arc(w/2,h/2,185,0,360*Math.PI/180,false);
+			ctx.closePath();
+			ctx.fill();
+			
+			//时刻度和表盘
+			ctx.lineWidth = 10;
+			for(var i = 0;i < 12;i++){ //360/12 = 30度
+				ctx.beginPath();
+				ctx.moveTo(w/2,h/2);//移动到中心点
+				ctx.arc(w/2,h/2,200,i*30*Math.PI/180,(i+1)*30*Math.PI/180,false);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			//绘制白色的圆覆盖前面的
+			ctx.fillStyle = "#fff";
+			ctx.beginPath();
+			ctx.arc(w/2,h/2,180,0,360*Math.PI/180,false);
+			ctx.closePath();
+			ctx.fill();
+			
+			//时针
+			ctx.lineWidth = 7;
+			ctx.beginPath();
+			ctx.moveTo(250,250);
+			ctx.arc(w/2,h/2,150,(-90+hour*30)*Math.PI/180,(-90+hour*30)*Math.PI/180,false);
+			ctx.closePath();
+			ctx.stroke();
+			
+			//分针
+			ctx.lineWidth = 5;
+			ctx.beginPath();
+			ctx.moveTo(250,250);
+			ctx.arc(w/2,h/2,170,(-90+min*6)*Math.PI/180,(-90+min*6)*Math.PI/180,false);
+			ctx.closePath();
+			ctx.stroke();
+			
+			//秒针
+			ctx.lineWidth = 3;
+			ctx.strokeStyle = "#f00"
+			ctx.beginPath();
+			ctx.moveTo(250,250);
+			ctx.arc(w/2,h/2,180,(-90+sec*6)*Math.PI/180,(-90+sec*6)*Math.PI/180,false);
+			ctx.closePath();
+			ctx.stroke();
+			
+			//中心实心圆
+			ctx.beginPath();
+			ctx.moveTo(250,250);
+			ctx.arc(w/2,h/2,7,0,360,false);
+			ctx.closePath();
+			ctx.fillStyle = "#000";
+			ctx.fill();
+		}
+		clock();	
+		setInterval(clock,1000)
+			
+			
+		</script>
+	</body>
+</html>

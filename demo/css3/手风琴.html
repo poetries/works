@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <style>
+        *{margin:0;padding:0;}
+		.main{width:1120px; height:400px; border:2px solid #333; margin:0 auto;overflow:hidden;}
+		ul,li{list-style:none;}
+		/*大盒子*/
+		.list{ width:2000px;}
+		.list li{width:31px; height:400px; float:left;position:relative;}
+		.list li p{width:40px; height:400px; background:rgba(0,0,0,0.5);left:0;top:0;position:absolute;}
+
+    </style>
+</head>
+<body>
+
+
+<div class="main">
+		<ul class="list" id="pro_list">
+			<li>
+			<a href="http://blog.poetries.top">
+				<img src="img/s1.jpg" width="996" height="400" alt="卖包"/>
+			</a>
+			<p></p>
+			</li>
+			<li>
+			<a href="http://blog.poetries.top">
+				<img src="img/s2.jpg" width="996" height="400" alt="卖包"/>
+			</a>
+			<p></p>
+			</li>
+			<li>
+			<a href="http://blog.poetries.top">
+				<img src="img/s3.jpg" width="996" height="400" alt="卖包"/>
+			</a>
+			<p></p>
+			</li>
+			<li>
+			<a href="http://blog.poetries.top">
+				<img src="img/s4.jpg" width="996" height="400" alt="卖包"/>
+			</a>
+			<p></p>
+			</li>
+			<li>
+			<a href="http://blog.poetries.top">
+				<img src="img/s5.jpg" width="996" height="400" alt="卖包"/>
+			</a>
+			<p></p>
+			</li>
+		</ul>
+	</div>
+
+
+
+
+<script src="js/jquery.js"></script>
+<script>
+
+var oList=document.getElementById("pro_list");
+var aLi=oList.getElementsByTagName("li");
+for(var j=0;j<aLi.length;j++)
+{
+	aLi[j].onclick=function()
+	{
+		for(var i=0;i<aLi.length;i++)
+		{
+			move(aLi[i],{width:31});
+		}
+		move(this,{width:996});
+	}
+}
+
+
+//获取css样式
+function getStyle(obj,attr)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[attr];
+	}else
+	{
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+//多属性运动框架
+/*
+ move(iTarget);
+ move(obj,iTarget);
+ move(obj,attr,iTarget);
+ move(obj,attr,iTarget,fn);
+ move(obj,{attr:iTarget,attr:iTarget,attr:iTarget,attr:iTarget},fn);
+*/
+function move(obj,json,fn)
+{
+	var iCur=0;//当前元素状态
+	var attr=0;//元素属性
+	var iTarget=0;//目标点
+	var iSpeed=0;//速度
+	//先关闭在打开
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		var onOff=true;
+		for(attr in json)
+		{
+			iTarget=json[attr];
+		//当前状态
+		if(attr=="opacity")
+		{
+			iCur=parseInt(parseFloat(getStyle(obj,attr)*100));
+			//ie处理透明
+			if(isNaN(iCur))
+			{
+				iCur=100;
+			}
+		}else
+		{
+			iCur=parseInt(getStyle(obj,attr));
+		}
+		//计算速度
+		if(iCur>iTarget)
+		{
+			iSpeed=Math.floor((iTarget-iCur)/7);
+		}else
+		{
+			iSpeed=Math.ceil((iTarget-iCur)/7);
+		}
+		if(iCur!=iTarget)
+		{
+			onOff=false;
+		}
+		//执行运动
+		if(attr=="opacity")
+		{
+			obj.style.opacity=(iCur+iSpeed)/100;
+			obj.style.filter="alpha(opacity="+(iCur+iSpeed)+")";
+		}else
+		{
+			obj.style[attr]=iCur+iSpeed+"px";
+		}
+	}
+	if(onOff==true)
+	{
+		clearInterval(obj.timer);
+		if(fn)
+		{
+			fn();	
+		}
+	}
+	},30);
+}
+
+</script>
+</body>
+</html>

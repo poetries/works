@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抢购倒计时</title>
+    <style>
+        p{
+            margin: 50px auto;
+            font-size: 18px;
+        }
+        p span {
+            font-size: 22px;
+            padding: 0 10px;
+            color: #f00;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+
+<p>剩余 <span>80</span>天  <span>2</span>时 <span>30</span>分 <span>50</span>秒</p>
+
+
+
+<script src="js/jquery.js"></script>
+<script>
+//剩余时间=结束时间-现在时间
+changeTime();
+function changeTime() {
+
+    var endTime = new Date();//结束时间
+    var curTime = new Date();//现在时间
+
+    //设置结束时间
+    endTime.setFullYear(2017);
+    endTime.setMonth(0);
+    endTime.setDate(12);
+    endTime.setHours(0);
+    endTime.setMinutes(0);
+    endTime.setSeconds(0);
+
+    //获取时间相差毫秒/1000
+    var s = (endTime.getTime()-curTime.getTime())/1000;//结束与现在时间相差秒数
+
+    if (s>0) {
+        //把毫秒化成天 小时 分 1天=24*60*60 = 86400s
+        var day = Math.floor(s / 86400);//天数
+        s = s % 86400;// 把天数去掉 剩下秒数
+        var hours = Math.floor(s / 3600);//小时
+        s = s % 3600;// 把小时去掉 剩下秒数
+        var minutes = Math.floor(s / 60);//分钟
+        s = s % 60;// 把分钟去掉 剩下秒数
+
+        $("p span").eq(0).html(fullZero(day, 2));
+        $("p span").eq(1).html(fullZero(hours, 2));
+        $("p span").eq(2).html(fullZero(minutes, 2));
+        $("p span").eq(3).html(fullZero(s, 2));
+    }
+
+}
+    setInterval(changeTime,1000);
+
+    //补零函数
+    function fullZero(currtime,n) {
+        var str = "" + currtime;
+        if (str.length < n){
+            str = "0"+str ;
+        }
+        return str;
+    }
+</script>
+</body>
+</html>

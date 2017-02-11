@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟滚动条</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .scroll {
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid green;
+            position: relative;
+        }
+        .scroll .scrollCon {
+            margin-top: 10px;
+            width: 370px;
+            height: 380px;
+            margin-left: 5px;
+            border: 1px solid red;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            overflow: hidden;
+        }
+        .scroll .scrollCon .scrollText {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 370px;
+            padding-left: 4px;
+            background: #ddd;
+            font-size: 12px;
+            line-height: 30px;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        .scroll .scrollBar {
+            width: 10px;
+            height: 380px;
+            background: #000;
+            opacity: .7;
+            border-radius: 5px;
+            position: absolute;
+            top:8px;
+            right: 5px;
+        }
+        .scroll .scrollBar .scrollBtn {
+            width: 10px;
+            height: 40px;
+            border-radius: 10px;
+            background: orangered;
+            opacity:.9;
+            position: absolute;
+            top:0px;
+            right: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="scroll">
+    <div class="scrollCon">
+        <div class="scrollText">
+            自从4月8日以来，再未探测到新的电子信号，这可能意味着为黑匣子记录仪定位探测器提供电能的电池，可能已经耗尽。这些电池仅能维持大约一个月，而这个期限已过。 　　当官员们确定不会再听到任何声音时，将派出潜水机器人。 　　澳大利亚总理阿博特12日说，针对马来西亚航空公司MH370航班的搜寻可能将持续相当长一段时间，原因是客机“黑匣子”发出的脉冲信号正在迅速减弱。
+            联合协调中心总协调人休斯敦当天宣布，决定暂停澳大利亚海军“海洋之盾”号补给舰使用拖曳声波定位仪的搜寻作业，转而使用“蓝鳍金枪鱼-21”自主式水下航行器。“我们已经6天没有任何发现，所以我猜是时候进行水下作业了，”休斯敦说。 　　按路透社的说法，搜寻人员已经基本确认失联客机的大概位置位于澳大利亚西南部城市珀斯西北约1550公里处，正在着手根据先前获得的4次疑似客机“黑匣子”脉冲信号展开进一步搜寻。
+            　　“尽管缺乏进一步发现，但是把先前获得的4次信号放在一起构成我们搜寻MH370航班最有希望的线索，”休斯敦说，“专家们因此决定，澳大利亚‘海洋之盾’号今天晚些时候将停止使用拖曳声波定位仪搜寻，同时尽快部署‘蓝鳍金枪鱼-21’自主式水下航行器。” 　　美国海军在一份声明中宣布定于珀斯当地时间14日17时部署“蓝鳍金枪鱼-21”。 　　搜索范围等于中型城市 　　动用“蓝鳍金枪鱼-21”意味着针对马航客机的搜寻进入新一个阶段。搜寻人员眼下将声学搜寻范围定在一处600平方公里的区域内，相当于一座中型城市。 　　休斯敦解释，“蓝鳍金枪鱼-21”的作业速度较慢，每一个任务周期要花费最多24个小时。
+            他提醒说，不要认为部署自主式水下航 自从4月8日以来，再未探测到新的电子信号，这可能意味着为黑匣子记录仪定位探测器提供电能的电池，可能已经耗尽。这些电池仅能维持大约一个月，而这个期限已过。 　　当官员们确定不会再听到任何声音时，将派出潜水机器人。 　　澳大利亚总理阿博特12日说，针对马来西亚航空公司MH370航班的搜寻可能将持续相当长一段时间，原因是客机“黑匣子”发出的脉冲信号正在迅速减弱。
+            联合协调中心总协调人休斯敦当天宣布，决定暂停澳大利亚海军“海洋之盾”号补给舰使用拖曳声波定位仪的搜寻作业，转而使用“蓝鳍金枪鱼-21”自主式水下航行器。“我们已经6天没有任何发现，所以我猜是时候进行水下作业了，”休斯敦说。 　　按路透社的说法，搜寻人员已经基本确认失联客机的大概位置位于澳大利亚西南部城市珀斯西北约1550公里处，正在着手根据先前获得的4次疑似客机“黑匣子”脉冲信号展开进一步搜寻。
+            　　“尽管缺乏进一步发现，但是把先前获得的4次信号放在一起构成我们搜寻MH370航班最有希望的线索，”休斯敦说，“专家们因此决定，澳大利亚‘海洋之盾’号今天晚些时候将停止使用拖曳声波定位仪搜寻，同时尽快部署‘蓝鳍金枪鱼-21’自主式水下航行器。” 　　美国海军在一份声明中宣布定于珀斯当地时间14日17时部署“蓝鳍金枪鱼-21”。 　　搜索范围等于中型城市 　　动用“蓝鳍金枪鱼-21”意味着针对马航客机的搜寻进入新一个阶段。搜寻人员眼下将声学搜寻范围定在一处600平方公里的区域内，相当于一座中型城市。 　　休斯敦解释，“蓝鳍金枪鱼-21”的作业速度较慢，每一个任务周期要花费最多24个小时。他提醒说，不要认为部署自主式水下航
+        </div>
+    </div>
+    <div class="scrollBar">
+        <div class="scrollBtn"></div>
+</div>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script>
+    var y = 0;
+    var _h = 0;
+    var _t = 0;
+    var newTop = 0;
+    var _height = 0;
+    var  percent = 0;
+    var scrollTextH = 0;
+
+    //鼠标按下
+    $(".scrollBtn").mousedown(function (e) {
+
+        y = e.clientY; //鼠标按下距离浏览器顶部的距离
+        _h = $(".scrollBtn").offset().top; //滑块距离浏览器顶部的距离
+        _t = y-_h;//鼠标按下的位置距离滑块顶端的距离
+        _height =  $(".scrollBar").height()- $(".scrollBtn").height();
+
+        $(document).mousemove(function (e) {
+            newTop = e.clientY - _t - $(".scrollBar").offset().top;//鼠标按下的位置距离scrollBar顶部的距离
+            if (newTop<0){
+                newTop = 0;
+            }else if (newTop>_height){
+                newTop = _height;
+            }
+            $(".scrollBtn").css("top",newTop);
+            //document.title = newTop;
+
+            //计算滑块在能滑动范围内的比例
+            percent = newTop/_height;
+            scrollTextH = percent*($(".scrollText").height()-$(".scrollCon").height());
+            $(".scrollText").css("top",-scrollTextH);
+        });
+        $(document).mouseup(function () {
+            $(document).unbind("mousemove");
+            $(document).unbind("mouseup");
+
+        });
+        return false;//阻止浏览器默认行为
+    });
+</script>
+</body>
+</html>

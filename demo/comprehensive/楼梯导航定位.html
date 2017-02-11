@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>楼梯导航定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .asideNav {
+            width: 32px;
+            border: 1px solid #ccc;
+            position: fixed;
+            top: 150px;
+            left: 50px;
+            display: none;
+        }
+
+        .asideNav ul li{
+            width: 32px;
+            height: 32px;
+            list-style: none;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            line-height: 32px;
+            border-bottom: 1px dotted #ddd;
+            position: relative;
+            cursor: pointer;
+        }
+        .asideNav ul li span {
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            display: none;
+        }
+        .asideNav ul li.top {
+            background: #c00;
+            color: #fff;
+        }
+        .asideNav ul li.hover span {
+            display: block;
+            background: #c00;
+            color: #fff;
+        }
+        .asideNav ul li.hover span.active {
+            display: block;
+            background: #c00;
+            color: #fff;
+        }
+        .asideNav ul li span.active {
+            display: block;
+            background: #fff;
+            color: #cc0000;
+        }
+        .header {
+            width: 1000px;
+            height: 600px;
+            background: gray;
+            margin: 0 auto;
+        }
+        .main {
+            margin: 0 auto;
+            background: red;
+            width: 1000px;
+        }
+        .main .louti {
+            width: 1000px;
+            height: 600px;
+            font-size: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
+        }
+        .footer {
+            margin: 0 auto;
+            background: blue;
+            width: 1000px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="asideNav">
+    <ul>
+        <li>1F <span>服饰</span> </li>
+        <li>2F <span>美妆</span></li>
+        <li>3F <span>服务</span></li>
+        <li>4F <span>手机</span></li>
+        <li>5F <span>家电</span></li>
+        <li>6F <span>数码</span></li>
+        <li>7F <span>运动</span></li>
+        <li>8F <span>居家</span></li>
+        <li>9F <span>母婴</span></li>
+        <li>10F<span>食品</span></li>
+        <li>11F<span>图书</span></li>
+        <li class="top">Top</li>
+    </ul>
+</div>
+
+<div class="header">header</div>
+<div class="main">
+    <div class="louti" style="background: #cc0000">服饰</div>
+    <div class="louti" style="background: green">美妆</div>
+    <div class="louti" style="background: yellowgreen">服务</div>
+    <div class="louti" style="background: #C5BBB6">手机</div>
+    <div class="louti" style="background: #CF2050">家电</div>
+    <div class="louti" style="background: #ff00cc">数码</div>
+    <div class="louti" style="background: #ff66cc">运动</div>
+    <div class="louti" style="background: #00C0A5">居家</div>
+    <div class="louti" style="background: #0033cc">母婴</div>
+    <div class="louti" style="background: #83C44E">食品</div>
+    <div class="louti" style="background: #02b1cb">图书</div>
+</div>
+<div class="footer">footer</div>
+
+<div style="height: 3000px;"></div>
+<script src="js/jquery.js"></script>
+<script>
+
+    $(".asideNav ul li").not("top").hover(function(){
+        $(this).addClass("hover");
+    },function () {
+        $(this).removeClass("hover");
+    });
+
+    //top 跳转
+    $(".asideNav ul li.top").click(function () {
+        $("body").animate({scrollTop:0},500);
+    });
+
+    var mark = 1;
+    $(".asideNav ul li").not("top").click(function () {
+        mark = 2;
+        $(".asideNav ul li").find("span").removeClass("active");
+        $(this).find("span").addClass("active");
+
+        //跳转指定楼层
+        var _index = $(this).index();
+        var _top = $(".main .louti").eq(_index).offset().top;//获取指定楼层与浏览器上面的距离
+        $("body").animate({scrollTop:_top},500,function () {
+            mark = 1;
+        });//浏览器滚动的高度
+    });
+
+    //浏览器窗口滚动事件
+    $(window).scroll(function(){
+        if (mark==1){
+            //获取滚动条滚动的高度
+            var _t = $(this).scrollTop();
+            if(_t>500){
+                $(".asideNav").fadeIn();
+            }else {
+                $(".asideNav").fadeOut();
+            }
+
+            //循环每一个楼层，找到最先满足的那个楼层
+            $(".main .louti").each(function () {
+                var _index = $(this).index();
+                var _h = $(".main .louti").eq(_index).offset().top+$(this).height()/2;//楼层与浏览器上边的高度
+                //alert(_h);
+                document.title = "滚动条"+_t+"楼层"+_h;
+                if(_t<_h){
+                    $(".asideNav ul li").find("span").removeClass("active");
+                    $(".asideNav ul li").eq(_index).find("span").addClass("active");
+                    return false;
+                }
+            });
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

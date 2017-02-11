@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城放大镜效果</title>
+	<style>
+        body,html {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 350px;
+            height: 390px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .container .simg {
+            width: 350px;
+            height: 300px;
+            position: relative;
+        }
+        .container .simg span.move {
+             display: inline-block;
+             width: 180px;
+             height: 180px;
+             position: absolute;
+             top:30px;
+             left: 30px;
+             background: url(img/shade.png) 0 0;
+             display: none;
+
+         }
+        .container .simg span.shade {
+            display: inline-block;
+            width: 350px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: blueviolet;
+            opacity: 0;
+            cursor: move;
+        }
+        .container .bimg {
+            position: absolute;
+            top: 0;
+            left: 380px;
+            width: 350px;
+            height: 300px;
+            overflow: hidden;
+            display: none;
+        }
+        .container .bimg img {
+            position: absolute;/*使大图具有移动 不可少*/
+        }
+        .container .img-btn {
+            width: 350px;
+            height: 90px;
+
+        }
+        .container .img-btn span.active {
+            border: 1px solid red;
+        }
+        .container .img-btn span.img {
+            display: inline-block;
+            width: 100px;
+            height: 70px;
+            margin-top: 15px;
+            margin-left: 7px;
+        }
+	</style>
+</head>
+<body>
+<div class="container">
+    <div class="simg">
+        <img src="img/1.jpg" alt="" width="350" height="300">
+        <span class="move"></span>
+        <span class="shade"></span>
+    </div>
+    <div class="bimg">
+        <img src="img/1.jpg" alt="">
+    </div>
+    <div class="img-btn">
+        <span class="img"> <img src="img/1.jpg" alt="" width="100" height="70" dataSrc="img/1.jpg"></span>
+        <span class="img"> <img src="img/2.jpg" alt="" width="100" height="70" dataSrc="img/2.jpg"></span>
+        <span class="img"> <img src="img/3.jpg" alt="" width="100" height="70" dataSrc="img/3.jpg"></span>
+    </div>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+
+    //鼠标移入移出
+    $("span.shade").hover(function(){
+        $("span.move,.bimg").show();
+    },function(){
+        $("span.move,.bimg").hide();
+    });
+
+    //当鼠标在遮罩层上滑动时 动态获取小滑块的位置
+    $(".container .simg span.shade").mousemove(function(e){
+        //获取鼠标与浏览器的坐标
+        var x = e.clientX; //鼠标与浏览器窗口左边的距离
+        var y= e.clientY+$(window).scrollTop();//鼠标与浏览器窗口上面距离
+        //document.title = x+"|"+y;
+
+        //遮罩层与浏览器窗口的距离
+        var l = $(this).offset().left;
+        var t = $(this).offset().top;
+        //document.title = l+"|"+t;
+
+        //小方块与simg盒子的距离=鼠标与浏览器的距离 - 遮罩层与浏览器窗口的距离-小方块宽度的一半
+        var w = $(".container .simg span.move").width()/2;
+        var h = $(".container .simg span.move").height()/2;
+        var _left = x - l - w;
+        var _top = y - t - h;
+
+        //边缘检测
+        //小滑块能滑动的最大高度与最大宽度
+        var maxH = $(this).height()-h*2-2;
+        var maxW = $(this).width()-w*2;
+        if(_top<0){
+            _top = 0;
+        }else if(_top > maxH){
+            _top = maxH;
+        }
+
+        if(_left<0){
+            _left = 0;
+        }else if(_left > maxW){
+            _left = maxW;
+        }
+
+        //document.title = _left+"|"+_top;
+        $(".container .simg span.move").css({
+            "left":_left,
+            "top":_top
+        });
+
+
+        //滑块 滑动宽度和高度的比例
+
+        var wb1 = _left/maxW;//滑动的宽度和总的能滑动的宽度的比例
+        var wh1 = _top/maxH;//滑动的高度和总的能滑动的高度的比例
+
+
+        //大图的宽度和高度
+        var bigW = $(".container .bimg img").width();
+        var bigH = $(".container .bimg img").height();
+
+        //盒子的宽度和高度
+        var boxW = $(".container .bimg").width();
+        var boxH = $(".container .bimg").height();
+
+        //大图要移动的距离=（大图的宽度-盒子的宽度）*滑动的比例
+        var bigLeft = (bigW -boxW)* wb1; //大图往左边移动的距离
+        var bigTop = (bigH-boxH) * wh1;
+
+        $(".container .bimg img").css({
+            "left":-bigLeft,
+            "top":-bigTop
+        });
+    });
+
+    //放大镜按钮
+
+    $(".img-btn span").mouseover(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+
+        //获取小图片对应的大图地址
+        var bimg = $(this).find("img").attr("dataSrc");
+        $(".bimg img,.simg img").attr("src",bimg);
+    });
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			.wrap{
+				width:500px;
+				height:500px;
+				margin:50px auto;
+			}
+			ul li{
+				list-style:none;
+				width:500px;
+				height:50px;
+				color:#fff;
+				text-align:center;
+				line-height:50px;
+				font-size:40px;
+				font-weight:bold;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="wrap" id="wrap">
+			<ul id="box">
+				<li style="background:#f3f" draggable="true">1</li>
+				<li style="background:#ff6" draggable="true">2</li>
+				<li style="background:#c60" draggable="true">3</li>
+				<li style="background:#903" draggable="true">4</li>
+				<li style="background:#0f6" draggable="true">5</li>
+				<li style="background:#636" draggable="true">6</li>
+				<li style="background:#36f" draggable="true">7</li>
+				<li style="background:#033" draggable="true">8</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var oUl = document.getElementById("box");
+			var oLi = oUl.getElementsByTagName("li");
+			var curr = 0;
+			function sort(){
+				for (var i = 0;i < oLi.length;i++) {
+					oLi[i].index = i;
+					oLi[i].ondragstart = function(ev){
+						var ev = ev || window.event;
+						ev.dataTransfer.setData("data",this.innerHTML);
+						//this.innerHTML = "被拖拽中...";
+						curr = this.index;
+					}
+					
+					oLi[i].ondragenter = function(){
+						for(var i = 0;i < oLi.length;i++){
+							oLi[i].style.border = "none";
+						}
+						if(curr != this.index){
+							this.style.border = "2px solid #000";
+						}
+					}
+					oLi[i].ondragover = function(e){
+						var e = e || window.event;
+						e.preventDefault();
+					}
+					oLi[i].ondrop = function(ev){ //鼠标释放的时候
+						//oUl.insertBefore(oLi[curr],this);//insertBefore(新节点，目标节点)
+						inserAfter(oLi[curr],this);
+						this.style.border = "none";
+						//oLi[curr].innerHTML = ev.DataTransfer.getData("data");
+						sort();
+					}
+				}
+			}
+			sort();
+			
+			function inserAfter(newItem,targerItem){
+				var parentItem = targerItem.parentNode;
+				if(parentItem.lastChild == targerItem){
+					parentItem.appendChild(newItem);
+				}else {
+					parentItem.insertBefore(newItem,targerItem.nextSibling);
+				}
+			}
+		</script>
+	</body>
+</html>

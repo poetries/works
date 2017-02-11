@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>label模拟选中的状态</title>
+		<style type="text/css">
+		label {
+			display: block;
+			width: 50px;
+			height: 50px;
+			border: 2px solid red;
+			border-radius: 50%;
+			background-color: #ccc;
+		}
+		input[type=checkbox]{
+			display: none;
+		}
+			:checked + label{
+				background-color: #F0AD4E;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="checkbox" id="ck1" />
+		<label for="ck1"></label>
+		<input type="checkbox" id="ck2" />
+		<label for="ck2"></label>
+		<input type="checkbox" id="ck3" />
+		<label for="ck3"></label>
+		<input type="checkbox" id="ck4" />
+		<label for="ck4"></label>
+		<input type="checkbox" id="ck5" />
+		<label for="ck5"></label>
+		<input type="checkbox" id="ck6" />
+		<label for="ck6"></label>
+	</body>
+</html>

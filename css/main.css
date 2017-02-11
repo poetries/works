@@ -1,0 +1,90 @@
+body {
+	background: url(../images/bg.png);
+}
+.ui-header {
+	background: #fff;
+    height: 72px;
+    box-shadow: 0 7px 10px #ccc;
+    position: relative;
+}
+.ui-header .logo {
+    font-family: "Comic Sans MS", cursive;
+    text-align: center;
+    color: #23a9f0;
+    height: 67px;
+    line-height: 67px;
+}
+.ui-header .logo a:hover,
+.ui-header .logo a:active,
+.ui-header .logo a:link {
+	text-decoration: none;
+}
+.side-nav {
+    width: 90px;
+    position: fixed;
+    border: 1px solid #d3d3d3;
+    border-radius: 0 6px 6px 0;
+    background: #fff;
+    top: 100px;
+    left: 0;
+    padding: 7px 0;
+    box-shadow: 7px 7px 10px #ccc;	
+    
+}
+.side-nav li {
+    line-height: 32px;
+}
+.side-nav li a{
+    padding-left: 25px;
+    color: #adadad;
+    display: block;
+    font-size: 14px;
+}
+.side-nav li a:hover,
+.side-nav li a:active {
+	color: #F0AD4E;
+	text-decoration: none;
+}
+.side-nav li.active a {
+    color: #111;
+    background: url(../images/arrow.png) no-repeat right center;
+}
+.ui-content {
+	width: 1150px;
+	height: auto;
+	padding: 10px;
+	margin-left: 100px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+.ui-content .ui-content-item {
+	display: none;
+}
+.ui-content .ui-content-item.hover {
+	display: block;
+}
+
+.list-item .item {
+	float: left;
+	background: #fff;
+	width: 260px;
+	height: auto;
+	margin-left: 16px;
+	margin-top: 10px;
+    padding-top: 4px;
+    box-shadow: 7px 7px 10px #ccc;    
+    border-radius: 5px;
+}
+.list-item .item .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+    width: 228px;
+    height: 200px;
+}
+.list-item .item p.desc {
+	padding-top: 2px;
+	text-align: center;
+	font-size: 14px;
+}

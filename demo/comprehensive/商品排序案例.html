@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #fff}
+        ul,li{list-style: none;}
+        body{font-size: 14px;font-family: "微软雅黑";}
+        #box{width: 640px;margin: 30px auto;background: #333}
+        #box li{padding: 10px;margin-top: 3px;color: #fff}
+        .fr{float: right;}
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <ul>
+            <li>产品<a href="javascript:void(0)" onclick="fn()"><span class="price fr">价格</span></a></li>
+        </ul>
+        <ul id="list">
+            <li>魅蓝note5 此价格不代表最终价格！<span class="price fr">1099￥</span></li>
+            <li>Apple iPhone 7 (A1660) 128G 黑色 移动联通电信4G手机<span class="price fr">5899￥</span></li>
+            <li>OPPO R9 4GB+64GB内存版 玫瑰金 全网通4G手机<span class="price fr">2499￥</span></li>
+            <li>小米 红米 3S 全网通 2GB内存 16GB ROM 经典金色<span class="price fr">799￥</span></li>
+            <li>荣耀7 (PLK-AL10) 3GB+64GB内存版 荣耀金<span class="price fr">1799￥</span></li>
+            <li>一加手机3（A3000) 6GB+64GB 冰川灰版 <span class="price fr">2499￥</span></li>
+            <li>Apple iPhone 6 Plus (A1524) 16GB<span class="price fr">3899￥</span></li>
+            <li>vivo X7Plus 全网通 4GB+64GB 移动联通电信4G手机 <span class="price fr">2799￥</span></li>
+            <li>VERTU 威图 Signature系列 红色小牛皮 经典<span class="price fr">258888￥</span></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        /*
+            数组是干什么的 数据它是一个容器 可以装任何的数据类型 但是数组不具有代表性
+            通过数组 除了排序 反转 要么变化里边的数据
+         */
+	   var box = document.getElementById("box");
+	  
+       var liNode = document.getElementById("list").getElementsByTagName("li");
+      
+       var len = liNode.length;
+       var arr = [];
+       var mark = true;
+      	function fn(){
+      		mark = !mark;
+	      	for (var i = 0;i<len;i++) {
+	       		arr.push(liNode[i]);
+	       		//console.log(parseInt(arr[i].innerHTML));
+	      	 }
+	       
+	       arr.sort(function(a,b){
+	       		var p1 = parseInt(a.getElementsByTagName("span")[0].innerHTML);
+	       		var p2 = parseInt(b.getElementsByTagName("span")[0].innerHTML);
+	       		if(mark){
+	       			return p2 - p1;//升序
+	       		}else{
+	       			return p1 - p2;//降序
+	       		}
+	       });
+	        
+	        for (var i= 0;i<len;i++) {
+	        	box.appendChild(arr[i]);
+	        }
+      	}
+
+
+
+
+        
+
+    </script>
+</body>
+</html>

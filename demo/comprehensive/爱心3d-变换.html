@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3d变换</title>
+		<style type="text/css">
+			*{
+			margin:0px;
+			padding:0px;
+		}
+		.box{
+			width:200px;
+			margin:200px auto;
+			perspective:800px;
+		}
+		.cube{
+			position:relative;
+			width:200px;height:200px;
+			transform-style:preserve-3d;
+			transform:translateZ(-100px) rotateY(0deg);
+			transition:4s;
+		}
+		.cube div{
+			position:absolute;
+			width:200px;
+			height:200px;
+			box-shadow:inset 0px 0px 30px rgba(0,0,0,.2);
+			color:#aaa;
+			font-size:40px;
+			text-align:center;
+			line-height:200px;
+		}
+		.cube div:nth-child(1){
+			left:0px;
+			top:-200px;
+			transform-origin:bottom;
+			transform:translateZ(100px) rotateX(90deg);
+			transition:2s;
+		}
+		.cube div:nth-child(2){
+			left:0px;
+			top:200px;
+			transform-origin:top;
+			transform:translateZ(100px) rotateX(-90deg);
+		}
+		.cube div:nth-child(3){
+			left:0px;
+			top:0px;
+			transform:translateZ(100px);
+		}
+		.cube div:nth-child(4){
+			left:0px;
+			top:0px;
+			transform:translateZ(-100px);
+		}
+		.cube div:nth-child(5){
+			left:-200px;
+			top:0px;
+			transform-origin:right;
+			transform:translateZ(100px) rotateY(-90deg);
+
+		}
+		.cube div:nth-child(6){
+			left:200px;
+			top:0px;
+			transform-origin:left;
+			transform:translateZ(100px) rotateY(90deg);
+		}
+		.cube .small{
+			position:absolute;
+			width:100px;
+			height:100px;
+			transform-style:preserve-3d;
+			transform:translateZ(0px) translateY(50px) translateX(50px);
+			transition:2s;
+		}
+		.cube .small P{
+			position:absolute;
+			width:100px;
+			height:100px;
+		}
+		
+		.small p:nth-child(1){
+			background:url("img/love-1.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateY(-50px) rotateX(90deg);
+		}
+		.small p:nth-child(2){
+			background:url("img/love-2.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateY(50px) rotateX(90deg);
+		}
+		.small p:nth-child(3){
+			background:url("img/love-3.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateZ(50px);
+		}
+		.small p:nth-child(4){
+			background:url("img/love-4.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateZ(-50px);
+		}
+		.small p:nth-child(5){
+			background:url("img/love-5.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateX(-50px) rotateY(90deg);
+		}
+		.small p:nth-child(6){
+			background:url("img/love-6.jpg") no-repeat;
+			background-size:100% 100%;
+			transform:translateX(50px) rotateY(-90deg);
+		}
+		.cube:hover{
+			transform:translateZ(-100px) rotateY(360deg);
+		}
+		.cube:hover div:nth-child(1){
+			transform:translateZ(100px) rotateX(-30deg);
+		}
+		.cube:hover .small{
+			transform:translateZ(0px) translateY(-200px) translateX(50px);
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="cube">
+				<div>上</div>
+				<div>下</div>
+				<div>前</div>
+				<div>后</div>
+				<div>左</div>
+				<div>右</div>
+				<div class="small">
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

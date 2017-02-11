@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3d水晶</title>
+		<style type="text/css">
+			span {
+				font-size: 40px;
+				font-weight: bold;
+				display: block;
+			}
+			.box {
+				width: 200px;
+				height: 100px;
+				margin: 50px auto;
+			}
+			.aniticlockwise{
+				float: left;
+			}
+			.clockwise {
+				float: right;
+			}
+			.rorate {
+				width: 272px;
+				height: 272px;
+				margin: auto;
+				background: url(img/sj.jpg) no-repeat;
+			}
+			.auto:checked ~ span {
+				display: none;
+			}
+			.auto:checked ~ .rorate {
+				animation: clockwise 1s steps(30) infinite;
+			}
+			
+			@keyframes clockwise{
+				0%{
+					background-position: 0px 0px;
+				}
+				100%{
+					background-position: -8192px 0px;
+				}
+			}
+			@keyframes aniticlockwise{
+				0%{
+					background-position: -8192px 0px;
+				}
+				100%{
+					background-position: 0px 0px;
+				}
+			}
+			.aniticlockwise:hover ~ .rorate {
+				animation: aniticlockwise 1s steps(30) infinite;
+			}
+			.clockwise:hover ~ .rorate {
+				animation: clockwise 1s steps(30) infinite;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input type="checkbox" name="" id="auto" checked class="auto"/>
+			<label for="auto" class="auto-rorate">Auto &#x21bb;</label>
+			<span class="aniticlockwise">&#x2190;</span>
+			<span class="clockwise">&#x2192;</span>
+			<div class="rorate"></div>
+		</div>
+		
+	</body>
+</html>

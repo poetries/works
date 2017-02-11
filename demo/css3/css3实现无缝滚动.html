@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box {
+				width:600px;
+				height:100px;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			.list:hover {
+				animation-play-state: paused; /*暂停*/
+			}
+			.list {
+				position: relative;
+				left: 0;
+				top: 0;
+				width: 1200px;
+				height: 100px;
+				animation: mov 5s linear infinite;
+			}
+			@-webkit-keyframes mov{
+				to{
+					left: -600px;
+				}
+			}
+			.list .list_item {
+				width: 100px;
+				height: 100px;
+				list-style: none;
+				float: left;
+			}
+			.pic {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="list">
+				<li class="list_item"><img src="img/gd-1.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-2.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-3.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-4.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-5.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-6.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-1.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-2.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-3.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-4.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-5.jpg" alt="" class="pic"/></li>
+				<li class="list_item"><img src="img/gd-6.jpg" alt="" class="pic"/></li>				
+			</ul>
+		</div>
+	</body>
+</html>

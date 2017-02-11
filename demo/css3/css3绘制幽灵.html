@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3绘制幽灵</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			body {
+				background: blanchedalmond;
+				overflow: hidden;
+			}
+			.yl {
+				position: relative;
+				width: 160px;
+				margin: 100px auto;
+				animation: updown 1s infinite alternate;
+			}
+			@keyframes updown{
+				0%{
+					margin-top: 100px;
+				}
+				100%{
+					margin-top: 170px;
+				}
+			}
+			.yl_body {
+				width: 140px;
+				height: 180px;
+				background: #fff;
+				border-radius: 50% 50% 0 0;
+			}
+			.yl_eye {
+				position: absolute;
+				top: 60px;
+				width: 15px;
+				height: 20px;
+				border:2px solid #000;
+				background: #000;
+				border-radius: 50%;
+				box-shadow: inset -2px -2px #fff;
+				
+			}
+			.yl_eye_l {
+				left: 45px;
+			}
+			.yl_eye_r {
+				right: 50px;
+			}
+			.yl_mouth {
+				position: absolute;
+				left: 70px;
+				top: 100px;
+				width: 15px;
+				height: 20px;
+				background: #fff;
+				border: 2px solid #000;
+				border-radius:50%;
+			}
+			.yl_footer {
+				width: 140px;
+				height: 20px;
+				background: radial-gradient(circle at 50% 0%,#fff 70%,transparent 70%);
+				background-size: 24px 24px; /*背景切割*/
+				
+			}
+				
+			.yl_shadow {
+				width: 140px;
+				height: 20px;
+				border-radius: 50%;
+				background: rgba(204, 204, 204, 0.51);
+				margin-top: 70px;
+				animation: shadow 1s infinite alternate;
+			}
+			@keyframes shadow{
+				0%{
+					margin-top: 70px;
+					background: rgba(204, 204, 204, 0.51);
+				}
+				100%{
+					margin-top: 0px;
+					background: rgba(204, 204, 204, 0.51);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="yl">
+			<div class="yl_body"></div>
+			<div class="yl_eye yl_eye_l"></div>
+			<div class="yl_eye yl_eye_r"></div>
+			<div class="yl_mouth"></div>
+			<div class="yl_footer"></div>
+			<div class="yl_shadow"></div>
+		</div>
+	</body>
+</html>

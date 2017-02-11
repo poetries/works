@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			#canvas {
+				display: block;
+				margin: auto;
+				background: #000;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--注意：canvas宽高需要设置在标签中 否则绘制的东西可能出错-->
+		<canvas id="canvas" width="1000" height="1000"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d"); //绘图环境
+			var w = canvas.width;
+			var h = canvas.height;
+			
+			//绘制轨道
+			function drawTrack(){
+				ctx.strokeStyle = "#fff";
+				for(var i = 0; i<8;i++){
+					ctx.beginPath();
+					ctx.arc(w/2,h/2,(i+1)*50,0,360*Math.PI/180,false);
+					ctx.stroke();
+					ctx.closePath();
+				}
+			}
+			
+			//绘制星体对象
+			function Star(x,y,radius,cycle,sColor,eColor){
+				this.x = x; //圆心坐标
+				this.y = y;	
+				this.radius = radius; //圆心半径
+				this.cycle = cycle; //公转周期
+				this.sColor = sColor; //渐变色初始值
+				this.eColor = eColor; //渐变色结束值
+				this.time = 0; //旋转循环比变量
+				this.color = null;
+				
+				this.draw = function(){
+					ctx.save();
+					ctx.translate(w/2,h/2);
+					ctx.rotate(this.time*(360/this.cycle)*Math.PI/180)
+					ctx.beginPath();
+					ctx.arc(this.x,this.y,this.radius,0,360*Math.PI/180,false);
+					this.color = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);//创建渐变
+					this.color.addColorStop(0,this.sColor);//设置渐变颜色
+					this.color.addColorStop(1,this.eColor);
+					ctx.fillStyle = this.color;
+					ctx.fill();
+					ctx.closePath();
+					ctx.restore();
+					this.time +=1 ;
+				}
+			}
+			function Sun(){
+				Star.call(this,0,0,30,0,"#f00","#ff0");
+			}
+			function Mercury(){
+				Star.call(this,0,-50,10,87,"#99cc99","#ff6666");
+			}
+			function Venus(){
+				Star.call(this,0,-100,20,225,"#99cc33","#993366");
+			}
+			function Earth(){
+				Star.call(this,0,-150,20,365,"#ff9933","#cccccc");
+			}
+			function Mars(){
+				Star.call(this,0,-200,10,687,"#996633","#cc3300");
+			}
+			function Jupiter(){
+				Star.call(this,0,-250,20,4333,"#0099cc","#00ff00");
+			}
+			function Saturn(){
+				Star.call(this,0,-300,30,10760,"#660099","#666666");
+			}
+			function Uranus(){
+				Star.call(this,0,-350,20,30800,"#ff3300","#006600");
+			}
+			function Neptune(){
+				Star.call(this,0,-400,10,60152,"#f00","#ff0");
+			}
+		
+			var sun = new Sun();
+			var mer = new Mercury();
+			var ven = new Venus();
+			var ear = new Earth();
+			var mar = new Mars();
+			var jup = new Jupiter();
+			var sat = new Saturn();
+			var ur = new Uranus();
+			var nep = new Neptune();
+			function move(){
+				ctx.clearRect(0,0,w,h);
+				drawTrack();
+				sun.draw();
+				mer.draw();
+				ven.draw();
+				ear.draw();
+				mar.draw();
+				jup.draw();
+				sat.draw();
+				ur.draw();
+				nep.draw();
+			}
+			setInterval(move,10);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽相册</title>
+		<style type="text/css">
+		#drap {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		#box {
+			position: relative;
+			width: 500px;
+			height: 500px;
+			border: 2px solid blue;
+			margin: 50px auto;
+		}
+		#box span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 192px;
+			height: 50px;
+			margin: auto;
+			display: none;
+		}
+		#box  img {
+			width: 100px;
+			height: 100px;
+		}
+		#dustbin {
+			width: 200px;
+			height: 100px;
+			line-height: 100px;
+			background: #000;
+			margin: auto;
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+	
+
+		<div id="box"><span>可以将文件拖放到这里！！</span></div>
+		<div id="dustbin">图片回收站</div>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var dusTbin = document.getElementById("dustbin");
+			var span = box.getElementsByTagName("span")[0];
+			
+			//目标元素事件
+			var img = '';
+			box.ondragenter = function(){//进入目标元素触发
+				span.style.display = "block";
+			}
+			box.ondragover = function(ev){//在目标元素上连续触发
+				var ev = ev||window.event;
+				ev.preventDefault();//阻止默认事件
+				span.style.display = "block";
+			}
+			box.ondragleave = function(){//离开目标元素
+				this.style.background = "none";
+			}
+			box.ondrop = function(ev){//在目标元素上面释放鼠标触发
+				//alert("拖拽结束！！");
+				var ev = ev||window.event;
+				ev.preventDefault();//阻止默认事件
+				span.style.display = "none";
+				
+				var file = ev.dataTransfer.files;
+				//alert(file[0].type);
+				
+				for(var i = 0; i< file.length;i++){
+					//file[i].type 返回图片的路径中包含了image
+					if(file[i].type.indexOf("image")!=-1){
+						var read = new FileReader(file[0]);//新建一个读取文件对象
+						read.readAsDataURL(file[i]);
+						read.onload = function(){//读取成功回调
+							var img = document.createElement("img");
+							//alert(this.result);
+							img.src = this.result;
+							box.appendChild(img);
+							
+							//获取img节点 实现删除功能
+							var oImg = document.getElementsByTagName("img");
+							if(oImg){
+								for(var j =0;j<oImg.length;j++){
+									oImg[j].ondragstart = function(ev){ 
+										ev.dataTransfer.setData("data",ev.target.innerHTML);
+										img = ev.target;//保存被拖动的元素
+									}
+									oImg[j].ondragend = function(ev){
+										ev.dataTransfer.clearData("data");//清除数据
+										img = null;
+									}
+								}
+							}
+							
+							
+							//实现删除功能(移除img节点)
+							dusTbin.ondragover = function(ev){
+								ev.preventDefault();
+							}
+							dusTbin.ondrop = function(){
+								if(img){
+									img.parentNode.removeChild(img);
+								}
+							}
+							
+							
+						}
+					}else {
+						alert("请上传图片");
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
+
+	</body>
+</html>

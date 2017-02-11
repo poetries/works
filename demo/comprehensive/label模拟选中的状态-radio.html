@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>label模拟选中的状态-radio</title>
+		<style type="text/css">
+		label {
+			display: block;
+			width: 50px;
+			height: 50px;
+			border: 2px solid red;
+			border-radius: 50%;
+			background-color: #ccc;
+		}
+		input[type=radio]{
+			display: none;
+		}
+		:checked + label{
+			background-color: #F0AD4E;
+		}
+		div {
+			float: left;
+			margin-left: 20px;
+		}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="radio" name="sex" id="ck1" />
+			<label for="ck1"></label>
+		</div>
+		<div>
+			<input type="radio" name="sex" id="ck2" />
+			<label for="ck2"></label>
+		</div>
+		<div>
+			<input type="radio" name="sex" id="ck3" />
+			<label for="ck3"></label>
+		</div>
+		<div>
+			<input type="radio" name="sex" id="ck4" />
+			<label for="ck4"></label>
+		</div>
+		<div>
+			<input type="radio" name="sex" id="ck5" />
+			<label for="ck5"></label>
+		</div>
+		<div>
+			<input type="radio" name="sex" id="ck6" />
+			<label for="ck6"></label>
+		</div>
+	</body>
+</html>

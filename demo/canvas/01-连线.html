@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta charset="gbk">
+		<style type='text/css'>
+			*{ margin:0; padding:0;font-family:'Microsoft yahei';}
+			a{ text-decoration:none;}
+			a img{ display:block; border:none;}
+			li{ list-style:none;}
+			
+			#canvas{
+				background:#000;
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<canvas id='canvas'></canvas>
+		<script type="text/javascript">
+			
+			var can = document.getElementById('canvas');
+			var cxt = can.getContext('2d');
+
+			var w = can.width = window.innerWidth;
+			var h = can.height = window.innerHeight;
+
+			var num = 200; //生成点的个数
+			var data = []; //定义一个数组，准备用来存坐标
+			var move = {};
+
+			document.onmousemove = function(e){
+				move.x = e.clientX;
+				move.y = e.clientY;
+			};
+			 
+			//生成num个点，并且存储初始坐标
+			for ( var i=0;i<num;i++ )
+			{
+				data[i] = {x:Math.random()*w , y:Math.random()*h , cX:Math.random()*1-0.5 , cY:Math.random()*1-0.5 };
+				Cricle(data[i].x,data[i].y);
+			};
+			
+
+			!function draw(){
+				cxt.clearRect(0,0,w,h);
+
+				for ( var i=0;i<num;i++ )
+				{
+					data[i].x += data[i].cX;
+					data[i].y += data[i].cY;
+					if ( data[i].x > w || data[i].x < 0 )data[i].cX = -data[i].cX;
+					if ( data[i].y > h || data[i].y < 0 )data[i].cY = -data[i].cY;
+					Cricle(data[i].x,data[i].y);
+					
+					for ( var j=0;j<num;j++ )
+					{
+						if ( (data[i].x-data[j].x)*(data[i].x-data[j].x) + (data[i].y-data[j].y)*(data[i].y-data[j].y) <= 50*50 )
+						{
+							line(data[i].x , data[i].y , data[j].x , data[j].y , false);
+						};
+					};
+					if ( move.x )
+					{
+						if ( (data[i].x-move.x)*(data[i].x-move.x) + (data[i].y-move.y)*(data[i].y-move.y) <= 100*100 )
+						{
+							line(data[i].x , data[i].y , move.x , move.y , true);
+						};
+					};
+				};
+				window.requestAnimationFrame( draw );
+			}();
+			
+			//画线
+			function line(x1,y1,x2,y2,isMove){
+				cxt.save();
+				var lin = cxt.createLinearGradient(x1,y1,x2,y2);
+				if ( !isMove )
+				{
+					lin.addColorStop(0,'#66ffff');
+					lin.addColorStop(1,'#990099');
+				}else{
+					lin.addColorStop(0,'#ffff00');
+					lin.addColorStop(1,'#0000cc');
+				}
+				cxt.strokeStyle = lin;
+				cxt.beginPath();
+				cxt.moveTo(x1,y1);
+				cxt.lineTo(x2,y2);
+				cxt.stroke();
+				cxt.restore();
+			};
+
+			//画点
+			function Cricle(x,y){
+				cxt.save();
+				cxt.fillStyle = 'pink';
+				cxt.beginPath();
+				cxt.arc(x,y,0.5,0,2*Math.PI,true);
+				cxt.closePath();
+				cxt.fill();
+				cxt.restore();
+			};
+
+			/*
+				x1 , y1
+				x2 , y2
+
+				(x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) = 
+			*/
+
+		</script>
+	</body>
+</html>

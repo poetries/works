@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				 font-size: 14px;
+				 font-family: "微软雅黑";
+				}
+           div{
+	           	 width: 80px;
+	           	 height: 40px;
+	           	 color: #fff;
+	           	 font-weight: 600;
+	           	 text-align: center;
+	           	 line-height: 40px;
+	           	 float:left;
+           	 }
+         .btn{
+	         	width: 60px;
+	         	height: 40px;
+	         	border-radius: 10px;
+	         	position: absolute;
+	         	left: calc(50% - 30px);
+	         	color: #333;
+         	}
+        .btn1{
+	        	width: 60px;
+	        	height: 40px;
+	        	border-radius: 10px;
+	        	position: absolute;
+	        	left: calc(40% - 30px);
+	        	color: #333;
+        	}
+
+		</style>
+	</head>
+	<body>
+		
+		<div class="btn" onclick="cstart()">开始</div>
+    	<div class="btn1" onclick="cstop()">暂停</div>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			
+			//生成[a,b] 随机数
+	        function randomNum(start,end){
+	            return Math.floor(Math.random()*(end-start+1)+start);
+	        }	
+	         //rgb颜色随机
+	        function randomRgb(){ //0-255
+	            var r = Math.floor(Math.random()*256);
+	            var g = Math.floor(Math.random()*256);
+	            var b = Math.floor(Math.random()*256);
+	            return "rgb("+r+","+g+","+b+")";
+	        };
+	        //16进制 颜色随机
+	        function randomColor16(){
+	            var r = Math.floor(Math.random()*256).toString(16);
+	            var g = Math.floor(Math.random()*256).toString(16);
+	            var b = Math.floor(Math.random()*256).toString(16);
+	            // 0 1 2 3 4 5 6 7 8 9 a b c d e f
+	            if(r.length<2)r="f"+r;
+	            if(g.length<2)g="e"+g;
+	            if(b.length<2)b="0"+b;
+	            return "#"+r+g+b;
+	        };
+	         // colorCard();
+	        var timer = null;
+	        function colorCard(){
+	            timer = setInterval(function(){
+	                var box = document.createElement("div");
+	                var color = randomColor16();
+	                box.innerHTML = color;
+	                box.style.background = color;
+	                document.body.appendChild(box);
+	            },1000/30)
+	        }
+	        function cstart(){
+	            colorCard();
+	        }
+	        function cstop(){
+	            clearInterval(timer);
+	        }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			input{
+				width: 200px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<img src="img/ggk.jpg" id="pic"/><br />
+		<input type="text" name="txt" id="txt" value="" />
+		<script type="text/javascript">
+			var img = document.getElementById("pic");
+			var txt = document.getElementById("txt");
+			//complete判断是否加载完成 完成返回true
+			//onerror 图片加载失败 调用
+			//onload 加载完成
+			//readStatus = "complete"状态
+			//readStatus = "loading"状态
+			if(img.complete || img.readyState == "complete" || img.readyState == "loading"){
+				draw();
+				
+			}else{
+				img.onload = function(){
+				
+				}
+			}
+			
+			function draw(){
+				//创建canvas节点	
+				var can = document.createElement("canvas");
+				can.style.position = "absolute";
+				can.style.left = img.offsetLeft +"px";
+				can.style.top = img.offsetTop +"px";
+				can.width = img.width;
+				can.height = img.height;
+				img.parentNode.insertBefore(can,img);
+				var ctx = can.getContext("2d");
+				ctx.fillStyle = "#bbb";
+				ctx.fillRect(0,0,can.width,can.height);
+				
+				//合成覆盖显示透明色
+				ctx.globalCompositeOperation = "destination-out";
+				ctx.strokeStyle = "#eee";
+				ctx.lineCap = "round";
+				ctx.lineWidth = 30;
+				
+				can.onmousedown = function(ev){
+					var ev = ev || window.event;
+					var x = ev.pageX - this.offsetLeft;
+					var y = ev.pageY - this.offsetTop;
+					var that = this;
+					
+					ctx.beginPath();
+					ctx.arc(x,y,15,0,360,false);
+					ctx.fill();
+					ctx.closePath();
+					
+					can.onmousemove = function(ev){
+						var ev = ev || window.event;
+
+						ctx.beginPath();
+						ctx.moveTo(x,y);
+						ctx.lineTo(ev.pageX - can.offsetLeft,ev.pageY - can.offsetTop);
+						var x = ev.pageX - can.offsetLeft;
+						var y = ev.pageY - can.offsetTop;
+						//ctx.closePath();
+						ctx.stroke();
+						
+					}
+					this.onmouseup = function(){
+						that.onmousemove = null;
+						that.onmouseup = null;
+						 check();
+					}
+				}
+				
+				function check(){
+					var data = ctx.getImageData(0,0,can.width,can.height).data;
+					var n = 0; //判断被刮开的像素点个数
+					for (var i=0;i<data.length-3;i+=4) {
+						//判断被刮开的像素点
+						if(data[i]==0 && data[i+1]==0&&data[i+2]==0&&data[i+3]==0){
+							n++;
+						}
+					}
+					var f = n*100/(can.width*can.height);
+					txt.value = "刮开面积 : "+f.toFixed(2)+"%";
+					
+					if (f>60) {
+						ctx.beginPath();
+						ctx.fillRect(0,0,can.width,can.height);
+						txt.value = "刮开面积大于60%全部显示 ";
+					}
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

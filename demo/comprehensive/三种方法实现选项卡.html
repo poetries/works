@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li {
+				padding: 20px;
+				border: 1px solid red;
+				margin-right: 5px;
+				float: left;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>001</li>
+			<li>002</li>
+			<li>003</li>
+			<li>004</li>
+			<li>005</li>
+		</ul>
+		<script type="text/javascript">
+			//自定义属性实现
+			var lis = document.getElementsByTagName("li");
+			/*
+			for(var i = 0;i<lis.length;i++){
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					alert(this.index);
+				}
+			}*/
+			
+			//自定义标签属性实现
+			/*for(var i = 0;i<lis.length;i++){
+				lis[i].setAttribute("index",i);
+				lis[i].onclick = function(){
+					var index = this.getAttribute("index");
+					alert(index);
+				}
+			}*/
+			
+			//闭包实现
+			for(var i = 0;i<lis.length;i++){
+				(function(index){
+					lis[index].onclick = function(){
+						alert(index);
+					}
+				})(i);
+			}
+			
+			
+		</script>
+	</body>
+</html>

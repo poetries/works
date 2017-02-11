@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>遮罩</title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			#box {
+				width: 500px;
+				height: 500px;
+				margin: auto;
+				background: url(img/zz.jpg) no-repeat;
+				background-size: 100% 100%;
+				border: 1px solid red;
+				-webkit-mask: url(img/mask.png) no-repeat; /*遮罩层*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var w = box.offsetLeft;
+			var l = box.offsetTop;
+			box.onmousemove = function(e){
+				var e = e || window.event;
+				var x = e.clientX-100-w;
+				var y = e.clientY-100-l;
+				box.style.webkitMaskPosition = x + "px " + y + "px";
+			}
+		</script>
+	</body>
+</html>

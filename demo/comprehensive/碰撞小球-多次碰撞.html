@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: #fff;
+				background: blueviolet;
+				border-radius: 50%;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			for(var i = 0;i<10;i++){
+				var box = document.createElement("div");
+				box.id = "box";
+				box.style.background = randomColor();
+				document.body.appendChild(box);
+				arr.push(box);
+				
+				//自定义属性 每个boxDom的初始位置 初始速度 存在自己对象底下
+				box.x = 0;
+				box.y = 0;
+				speed = i+1;
+				box.xstep = speed;
+				box.ystep = speed;
+				box.innerHTML = i;
+				
+				box.onclick = function(){
+					if(arr.indexOf(this) !=-1){
+						this.parentNode.removeChild(this);
+					}
+				}
+			}
+			
+			function play(){
+				//遍历每个小球
+				for (var i=0;i<arr.length;i++) {
+					box = arr[i];
+					var maxW = window.innerWidth - box.offsetWidth;
+                	var maxH = window.innerHeight - box.offsetHeight;
+                	
+                	box.x +=box.xstep;
+                	box.y +=box.ystep;
+                	
+                	//x方向
+                	if(box.x>maxW){
+                		box.x = maxW;
+                		box.xstep = -speed;
+                		box.style.background = randomColor();
+                	}
+                	if(box.x<0){
+                		box.x = 0;
+                		box.xstep = speed;
+                		box.style.background = randomColor();
+                	}
+                	//y方向
+                	if(box.y>maxH){
+                		box.y = maxH;
+                		box.ystep = -speed;
+                		box.style.background = randomColor();
+                	}
+                	if(box.y<0){
+                		box.y = 0;
+                		box.ystep = speed;
+                		box.style.background = randomColor();
+                	}
+                	
+                	box.style.top = box.y + "px";
+                	box.style.left = box.x + "px";
+				}
+			}
+			setInterval(play,1000/20);
+			
+			function randomColor(){
+				  var r = Math.floor(Math.random()*256);
+	              var g = Math.floor(Math.random()*256);
+	              var b = Math.floor(Math.random()*256);
+	              return "rgb("+r+","+g+","+b+")";
+			}
+		</script>
+	</body>
+</html>

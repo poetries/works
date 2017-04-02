@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>@poetries's todo list</title>
+		<link rel="stylesheet"
+              href="http://fonts.googleapis.com/css?family=Carter+One">
+        <link rel="stylesheet" type="text/css" href="css/resets.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery.bigcolorpicker.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+	</head>
+	<body>
+		
+	<div class="container-fluid">
+		<!-- header -->
+		<header>
+			<div class="row">
+				<span class="text-center" id="todoTitle">Todo list</span>
+			</div>
+			<nav class="row">
+				<ul class="nav-menu-list">
+					<li><a href="" class="active">Add Todo</a></li>
+					<li><a href="">Settings</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<!-- section part1 -->
+		<section class="list active">
+			<div class="row">
+				<form  class="form-horizontal add-task" role="form" name="form">
+					<div class="col-md-10">
+						<input type="text" name="search" id="addTodo" class="form-control" placeholder="Add Task..." autofocus autocomplete="off"/>
+					</div>
+					<div class="col-md-2">
+						<button type="submit"  class="btn btn-success btn-sm" id="taskSubimit">提交</button>
+					</div>
+				</form>
+			</div>	
+			<div class="row">
+				<ul id="task_list" class="task-list">
+
+					<li class="task-item">
+						<span><input type="checkbox" name="" id="" value="" /></span>
+						<span class="item-content">Your Tasks</span>
+						<div class="pull-right">
+							<button class="delete btn btn-danger btn-xs" ><a href="" class="task-item-btnColor delete">delete</a></button>
+							<button class="detail btn btn-success btn-xs" ><a href="" class="task-item-btnColor" id="detail">detail</a></button>
+						</div>
+					</li>
+					
+				</ul>
+
+				<!-- 遮罩层 -->
+				<div class="task-detail-mask" id="task-modal"></div>
+				
+				<div class="task-detail">
+					<div class="h3 text-center">清单Todo</div>
+					<div class="desc">
+						<textarea name="" rows="" cols=""></textarea>
+					</div>
+					<div class="remind">
+						<input type="date" name="" id="" />
+						<button class="btn btn-success btn-sm">提交</button>
+					</div>
+				</div>				
+			</div>
+		</section>
+
+
+		<!-- section part2 -->
+		
+		<section class="settings comm">
+			<div class="row">
+				<label class="h4">Todo Name</label>
+				<input type="text" id="name-filed" class="txt" placeholder="Please enter your task title" />
+			</div>
+			<div class="row">
+				<label class="h4">Color Scheme</label>
+				<span class="btn btn-default showColor">pick color</span>
+			</div>
+			<div class="row">
+				<button class="btn btn-success todo-btn" id="save">保存</button>
+				<button class="btn btn-danger todo-btn" id="reset">重置</button>
+			</div>
+		</section>
+		
+			
+	</div>
+	
+
+	</body>
+	<script src="js/vendor/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vendor/jquery.bigcolorpicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vendor/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/localStorage.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+</html>

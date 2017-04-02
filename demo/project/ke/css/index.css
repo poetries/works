@@ -1,0 +1,909 @@
+/*common style start*/
+*{
+	margin:0;
+	padding:0;
+
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: "Microsoft Yahei";
+}
+
+div.container {
+	width:100%;
+	min-width: 1200px;
+}
+
+div.content{
+	width: 1200px;
+	margin:0 auto;
+
+}
+
+ul,ol {
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.buttonIcon{
+	background-image:url("../images/button.png");
+	background-repeat:no-repeat;
+}
+/*common style end*/
+
+/*header start*/
+
+#header{
+	margin: 0 auto;
+	height: 85px;
+	padding-top: 15px;
+}
+#header div.content h1{
+	float: left;
+	margin-top: 3px;
+}
+
+#header div.content div.search{
+	float: left;
+	width: 450px;
+	height: 36px;
+	margin-left:220px;
+	border: 2px solid #188eee;
+	position: relative;
+
+}
+#header div.content div.search input{
+	width: 370px;
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	outline: 0;
+	color: #545454;
+	font-family: "Microsoft Yahei";
+	font-size: 12px;
+	padding: 3px 10px;
+}
+#header div.content div.search a{
+	width: 58px;
+	height: 36px;
+	float: right;
+	line-height: 36px;
+	text-align: center;
+	background: #188eee;
+}
+#header div.content div.search li a{
+	
+	position: relative;
+}
+#header div.content div.search a i{
+	position: absolute;
+	right: 15px;
+	top:10px;
+	width: 20px;
+	height: 20px;
+	background-image: url("../images/icon-search-white.png");
+	background-position: center center;
+}
+#header div.content ul.login{
+	float: right;
+	height: 40px;
+	line-height: 40px;
+	color:#dedede;
+	margin-top: 2px;
+	font-size:12px;
+}
+
+
+
+div.container div.content ul.login li{
+	float: left;
+	padding: 0 0 0 6px;
+}
+div.container div.content ul.login li a{
+	color: #333;
+}
+div.clear{
+	clear: both;
+}
+/*header end*/
+
+/* banner start */
+
+#banner{
+	position: relative;
+}
+
+#banner div.content div.little-banner{
+	height: 50px;
+	width: 100%;
+	margin: 0 auto;
+}
+#banner div.content div.little-banner a{
+	display: block;
+	height: 100%;
+	margin-left:220px;
+}
+
+#banner div.big-banner{
+	height: 300px;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+#banner div.big-banner ol{
+	width: 110px;
+	height: 24px;
+	position: absolute;
+	left:45%;
+	bottom: 30px;
+	background: rgba(0,0,0,0.1);
+	border-radius: 24px;
+	padding-left:10px;
+	padding-top: 3px;
+	margin-left: 20px;
+
+
+}
+#banner div.big-banner ol li{
+	width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    margin: 7px 5px 10px 5px;
+    float: left;
+    cursor: pointer;
+	transition:all 0.3 ease 0s;
+    
+}
+
+#banner div.big-banner ol li.curr-list{
+	background-color: #fff;
+}
+#banner div.big-banner:hover a.button{
+	display: block;
+}
+#banner div.big-banner ul  li{
+	position: absolute;
+	top:0;
+	left: 0px;
+	display: none;
+
+}
+#banner  div.big-banner ul li.curr-banner{
+	display: block;
+}
+#banner  div.big-banner a.button{
+	width: 46px;
+	height:70px;
+	position: absolute;
+	top:110px;
+	background-image: url("../images/button.png");
+	background-repeat: no-repeat;
+	display: none;
+}
+#banner  div.big-banner a.prev{
+	left: 274px;
+	background-position: -83px -3px;
+}
+#banner  div.big-banner a.prev:hover{
+	background-position: -171px 0;
+	
+}
+#banner  div.big-banner a.next{
+	right: 274px;
+	background-position: -125px -3px;
+}
+#banner  div.big-banner a.next:hover{
+	background-position: 0 -57px;
+	
+}
+
+#banner div.big-banner  ul li a img{
+	margin-left: -300px;
+}
+
+#banner div.content div.nav-left{
+	width: 220px;
+	position: absolute;
+	top: 0;
+	left:50px;
+	z-index: 2;
+	background: #188eee;
+}
+#banner div.content div.nav-left a.title{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+    display: block;
+    color: #fff;
+}
+#banner div.content div.nav-left a.title:hover{
+	text-decoration: underline;
+}
+#banner div.content div.nav-left a.title i{
+	width: 18px;
+	height: 14px;
+	display: inline-block;
+	background-image: url("../images/button.png");
+	background-repeat: no-repeat;
+	background-position: -126px -163px;
+	margin: 0 10px 0 15px;
+}
+#banner div.content div.nav-left  div.nav-list{
+	width: 100%;
+	height: 300px;
+	background-color: #0477C0;
+}
+#banner div.content div.nav-left  div.nav-list dl{
+	position: relative;
+	width: 205px;
+	height: 59px;
+	padding-top: 11px;
+	padding-left: 15px;
+    border-bottom: 1px solid #1681c4;
+    background: #0477C0;	
+}
+#banner div.content div.nav-left  div.nav-list dl a:hover{
+	text-decoration: underline;
+}
+
+#banner div.content div.nav-left  div.nav-list dl:hover{
+	background-color: #0264A3;
+}
+#banner div.content div.nav-left  div.nav-list dl dd{
+	float: left;
+    font-size: 14px;
+    line-height: 35px;
+    margin-right: 10px;	
+}
+#banner div.content div.nav-left  div.nav-list dl dt{
+	position:relative;
+}
+#banner div.content div.nav-left  div.nav-list dl dt i.buttonIcon{
+	background-position:-147px -163px;
+	width: 6px;
+    height: 12px;
+	display:block;
+	position: absolute;
+    top: 18px;
+    right: 16px;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover dt i.buttonIcon{
+	background-position:-156px -164px;
+}
+#banner div.content div.nav-left  div.nav-list dl dd a{
+	color: #97d2f7;
+}
+#banner div.content div.nav-left  div.nav-list dl dt a{
+	color: #fff;
+}
+#banner div.content div.nav-left  div.nav-list dl div.subNav{
+	width:425px;
+    background-color: rgba(255,255,255,.9);
+ 	top: 0px;
+    left: 220px;
+    position: absolute;
+    padding: 10px 20px;
+    display:none;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav{
+	display:block;
+} 
+
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div{
+	padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    height: 48px;
+    clear: both;
+}
+
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div p{
+	width: 80px;
+    height: 100%;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    width: 80px;
+    float: left;
+    margin-top: 1px;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div p a{
+	color: #039ae3;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div ul{
+	width: 300px;
+    float: left;
+}
+    
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div ul li{
+	display: inline-block;
+    width: 91px;
+    height: 21px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div ul li a{
+	color: #000;
+}
+#banner div.content div.nav-left  div.nav-list dl:hover div.subNav div ul li a:hover{
+	color: #63b6f7;
+}
+#banner div.content div.nav-right-board{
+	width: 220px;
+    height: 250px;
+    position: absolute;
+    right: 40px;
+    top: 65px;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+#banner div.content div.nav-right-board ul{
+	list-style: square;
+    padding: 0 0 0 15px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+#banner div.content div.nav-right-board ul li{
+	padding: 13px 0 1px;
+    color: white;
+}
+#banner div.content div.nav-right-board ul li a{
+	color: white;
+}
+#banner div.content div.nav-right-board ul li a:hover{
+	text-decoration:underline;
+}
+#banner div.content div.nav-right-board .button{
+	display:inline-block;
+	width:110px;
+	height:104px;
+	margin-top:14px;
+	text-algin:center;
+	float:left;
+    background: rgba(0,0,0,0.2);
+	position:relative;
+	color:#fff;
+}
+
+#banner div.content div.nav-right-board .button .buttonIcon{
+	display: inline-block;
+    width: 44px;
+    height: 44px;
+    margin-top: 10px;
+    margin-right: 5px;
+	position:absolute;
+	top:2px;
+	left:32px;
+}
+#banner div.content div.nav-right-board a.button i.buttonIcon{
+	background-position: -123px -73px;
+}
+#banner div.content div.nav-right-board .button p{
+	font-size: 16px;
+	text-algin:center;
+	position:relative;
+	left:36px;
+	top:64px;
+}
+#banner div.content div.nav-right-board .button .samllSize{
+	font-size: 12px;
+}
+#banner div.content div.nav-right-board div.button i.buttonIcon{
+	background-position: -172px -73px;
+}
+#banner div.content div.nav-right-board div.button img{
+	position:relative;
+	top:-37px;
+	left:-111px;
+	width:110px;
+	height:104px;
+	display:none;
+}
+
+#banner div.content div.nav-bottom-course{
+	height: 125px;
+	width:980px;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    padding-left: 238px;
+	position:absolute;
+	top:94%;
+	left:5%;
+	padding-bottom:20px;
+}
+#banner div.content div.nav-bottom-course ul li{
+	width:326px;
+	height:100%;
+	float:left;
+}
+/* banner end */
+
+
+
+
+/*common style start*/
+
+div.content div.course-nav h2{
+	font-weight: normal;
+    height: 36px;
+    float: left;
+}
+
+div.content div.course-nav h2 .hot-tittle{
+	font-size: 22px;
+    width: 222px;
+    line-height: 24px;
+    display: inline-block;
+    color: #000;
+	
+}
+div.content div.course-nav{
+	height: 40px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+div.content div.course-nav ul{
+	
+    height: 40px;
+}
+div.content div.course-nav ul li{
+	float:left;
+	font-size: 14px;
+    height: 40px;
+}
+div.content div.course-nav ul li a{
+	display: block;
+    width: 90px;
+    text-align: center;
+    color: #333;
+    margin-top: 8px;
+}
+div.content div.course-nav div.pages{
+	position:relative;
+	width:100%;
+	height:200px;
+	padding-top:30px;
+	margin-top: 22px;
+}
+div.content div.course-nav div.pages div.page{
+	position:absolute;
+	top:0;
+	left:21px;
+	display:none;
+}
+div.content div.course-nav div.pages div.on{
+	display:block;
+}
+div.content div.course-nav ul.course-type li.curr{
+	border-bottom: 2px solid #188eee;
+	color:#188eee;
+}
+
+div.content div.course-nav ul.course-type li a:hover{
+	color:#188eee;
+}
+div.content div.course-nav ul li a{
+	display: block;
+    width: 90px;
+    text-align: center;
+    color: #333;
+    margin-top: 8px;
+}
+div.content div.course-hot-menu{
+    height: 200px;
+	font-size:14px;
+}
+div.content div.course-hot-menu ul{
+	height:100%;
+	width: 100%;
+}
+
+div.content div.course-menu-card:hover{
+	border: 1px solid #dddddd;
+	width: 220px;
+    border-top: none;
+}
+div.content div.course-hot-menu ul li{
+	float: left;
+    width: 200px;
+    height: 124px;
+    margin-left: 5px;
+    margin-right: 26px;
+}
+div.content div.course-hot-menu ul li div.course-menu-card a.course-img{
+	display: block;
+    width: 220px;
+    height: 124px;
+    position: relative;
+}
+div.content div.course-hot-menu ul li div.course-menu-card a.course-description{
+	display: block;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 220px;
+    padding-top: 8px;
+    overflow: hidden;
+}
+div.content div.course-hot-menu ul li div.course-menu-card{
+	width:220px;
+	height:100%;
+}
+div.content div.course-hot-menu ul li div.course-menu-card a:hover{
+	color: #62B4F7;
+}
+div.content div.course-hot-menu ul li div.course-menu-card p{
+	padding-top: 2px;
+	padding-left:22px;
+    color: #dedede;
+}
+div.content div.course-hot-menu ul li div.course-menu-card p span.free{
+	color: #5FB41B;
+    display: inline-block;
+    vertical-align: 4px;
+}
+div.content div.course-hot-menu ul li div.course-menu-card p span.symbol{
+	display: inline-block;
+    vertical-align: 4px;
+    margin-right: -10px;
+	padding-left: 5px;
+}
+div.content div.course-hot-menu ul li div.course-menu-card p span.charge{
+	color: #E85308;
+    vertical-align: 4px;
+    margin-right: 9px;
+}
+div.content div.course-hot-menu ul li div.course-menu-card p a{
+	color: #999;
+    margin-left: 7px;
+    text-decoration: none;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 128px;
+}
+
+/*common style end*/
+
+
+/*hot-course start*/
+
+#first-hot-course{
+	margin-top:200px;
+}
+
+#first-hot-course div.content div.course-nav ul li a i{
+	width: 18px;
+    height: 18px;
+    display: inline-block;
+    background: url("../images/button.png");
+    background-position: -49px -99px;
+    margin-right: 5px;
+    vertical-align: -4px;
+}
+#first-hot-course div.content div.course-nav ul li:hover a i{
+	background-position: -49px -78px;
+}
+#first-hot-course div.content div.course-nav ul li a i{
+	width: 18px;
+    height: 18px;
+    display: inline-block;
+    background: url("../images/button.png");
+    background-position: -49px -99px;
+    margin-right: 5px;
+    vertical-align: -4px;
+}
+
+/*hot-course end*/
+
+/*proffession start*/
+
+#proffession{
+	margin-top:260px;
+	height: 500px;
+}
+
+div.content div.course-nav{
+	position:relative;
+}
+div.content div.course-nav div.prof-left{
+	width:240px;
+	height:420px;
+	position:absolute;
+	top:41px;
+	left:-19px;
+
+}
+
+div.content div.course-nav div.prof-middle{
+	width:730px;
+	height:420px;
+	position:absolute;
+	top:1px;
+	left:222px;
+}
+div.content div.course-nav div.prof-right{
+	width:200px;
+	height:420px;
+	position:absolute;
+	top:50px;
+	right:0;
+}
+#proffession div.content div.course-hot-menu ul li,
+#language div.content div.course-hot-menu ul li,
+#itTraing div.content div.course-hot-menu ul li
+{
+	float: left;
+    width: 200px;
+    height: 124px;
+	margin-right:0px;
+	margin-bottom:88px;
+	margin-left:34px;
+}
+#proffession div.content div.course-hot-menu ul,
+#language div.content div.course-hot-menu ul,
+#itTraing div.content div.course-hot-menu ul
+{
+	margin-left: -28px;
+}
+
+/*proffession end*/
+
+/** language start**/
+
+#language{
+	margin-top:10px;
+	height: 500px;
+}
+/** language end**/
+
+#itTraing{
+	margin-top:10px;
+	height: 500px;
+}
+
+/*shool start*/
+
+
+div.container div.content div.shool-left{
+	width:465px;
+	height:220px;
+	margin-right:20px;
+	position:absolute;
+	top:42px;
+	left:0px;
+}
+
+div.container div.content div.shool-right{
+	width:700px;
+	height:220px;
+	position:absolute;
+	top:0px;
+	right:34px;
+}
+#shool div.content div.course-nav div.course-hot-menu ul,
+#love div.content div.course-nav div.course-hot-menu ul,
+#child div.content div.course-nav div.course-hot-menu ul
+{
+	width:750px;
+	height:100%;
+}
+
+
+
+#shool,#love,#child{
+	margin-top:10px;
+	height: 300px;
+	position:relative;
+
+}
+
+/*shool end*/
+
+/* authority start*/
+
+#authority{
+	margin-top:20px;
+	height:96px;
+	padding:80px 33px;
+}
+
+#authority div.agency-apply {
+    width: 100px;
+    height: 96px;
+	float:left;
+	margin-left:-32px;
+
+}
+#authority div.agency-apply h3{
+	font-size: 22px;
+    font-weight: normal;
+    margin-top: 21px;
+    margin-bottom: 4px;
+}
+#authority div.agency-apply  a{
+	font-size: 14px;
+    color: #188eee;
+}
+
+#authority div.content div.lists{
+	position:relative;
+	width:1070px;
+	height:94px;
+	margin-left:90px;
+}
+#authority div.content div.lists a{
+	width:26px;
+	height:30px;
+	position:absolute;
+	top:33px;
+}
+#authority div.content div.lists a.prev{
+	left:-10px;
+	background-position:-58px -130px;
+}
+#authority div.content div.lists a.next{
+	right: -10px;
+    background-position: -116px -130px;
+}
+#authority div.content div.lists ul{
+	
+	float:left;
+	margin-left:30px;
+}
+#authority div.content div.lists ul li {
+	float:left;
+	width:110px;
+	height:92px;
+	margin-right:15px;
+	
+	
+}
+#authority div.content div.lists ul li a img{
+	position:relative;
+	top:-32px;
+	left:0px;
+	width:110px;
+	height:92px;
+}
+fon
+/* authority end*/
+
+
+/*footer start*/
+
+
+#footer{
+	height:250px;
+	background-color:#444546;
+	padding:41px 33px;
+}
+#footer h3{
+	font-size: 22px;
+    color: #999;
+    font-weight: normal;
+}
+#footer ul{
+	float:left;
+	margin-top: 27px;
+    border-bottom: 1px solid #4a4b4c;
+    height: 53px;
+}
+#footer ul li{
+	float:left;
+    margin-right: 35px;
+}
+#footer ul li a{
+	color: #999;
+    font-size: 14px;
+}
+#footer p{
+	clear:both;
+}
+#footer em.icon-logo-bottom{
+	display: block;
+    position:relative;
+	top:115px;
+	left:-20px;
+	background-image:url("../images/icon_logo_bottom.png");
+	background-repeat:no-repeat;
+	margin: 0 auto;
+    width: 42px;
+    height: 32px;
+
+
+}
+#footer p{
+    text-align: center;
+    color: #777;
+    line-height: 24px;
+	position: relative;
+	left:-20px;
+    top: 77px;
+	font-size:12px;
+}
+/*footer end*/
+
+/*rank-right-tabs start*/
+
+
+div.container div.content div.course-nav ul.course-rank{
+	width:201px;
+	height: 391px;
+	margin-left:-15px;
+	text-align: center;
+}
+
+div.container div.content div.course-nav ul.course-rank li{
+
+	height: 38px;
+    padding: 0px 27px;
+}
+
+div.container div.content div.course-nav ul.course-rank li:hover{
+	background: #e5e5e5;
+
+}
+.rank-menu-num{
+	display: inline-block;
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-left: 1px;
+
+}
+.rank-menu-num-1{
+	background-position: -105px -163px;
+    margin: 5px 11px 0 -1px;
+}
+.rank-menu-num-2{
+	background-position: -84px -163px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-3{
+    background-position: -21px -163px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-4{
+    background-position: -174px -130px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-5{
+	background-position: -49px -57px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-6{
+    background-position: 0 -163px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-7{
+    background-position: -63px -163px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-menu-num-8{
+    background-position: -42px -163px;
+    margin: 7px 14px 0 -1px;
+}
+.rank-description {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 180px;
+    overflow: hidden;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    text-align: left;
+}
+
+/*rank-right-tabs end*/

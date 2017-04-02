@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>猜拳游戏</title>
+  <link rel="stylesheet" href="css/game.css">
+ </head>
+ <body>
+  <div id="game">
+	<ul class="panel">
+		<li>
+			<p class="name">您:name</p>
+			<div class="anim user"></div>
+		</li>
+		<li>
+			<p class="name">电脑:name</p>
+			<div class="anim comp"></div>
+		</li>
+	</ul>
+	 <div class="op">
+		<button id ="play" Onclick="game.play();">开&nbsp;&nbsp;始</button>
+	 </div>
+	 <div class="text">请开始游戏...</div>
+	 <ul class="guess">
+		<li>
+			<div class="guess0" Onclick="game.verdict(0);">石头</div>
+		</li>
+		<li>
+			<div class="guess1" Onclick="game.verdict(1);">剪刀</div>
+		</li>
+		<li>
+			<div class="guess2" Onclick="game.verdict(2);">布</div>
+		</li>
+	 </ul>
+  </div>
+ 
+ </body>
+ <script type="text/javascript" src= "js/game.js"></script>
+</html>

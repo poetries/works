@@ -1,0 +1,118 @@
+*{
+	margin:0;
+	padding:0;
+}
+html,
+body{
+	width:100%;
+	height:100%;
+	font-family:"微软雅黑";
+	font-size:28px;
+	background-color:rgba(244, 184, 202,.2)
+}
+ul{
+	list-style:none;
+}
+
+#game{
+	width:800px;
+	height:600px;
+	margin:auto;
+	top:20%;
+}
+#game ul{
+	width:800px;
+	height:415px;
+	text-align:center;
+}
+#game ul li{
+	width:50%;
+	height:100%;
+	float:left;
+}
+#game ul li div.anim{
+	width:223px;
+	height:337px;
+	border:10px solid rgb(254,123,163);
+	border-radius:50%;
+	margin:auto;
+	margin-top:20px;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+div.user{
+	background-image:url("../images/readyl.png");
+}
+div.comp{
+	background-image:url("../images/readyr.png");
+}
+
+#game div.op{
+	width:100%;
+	text-align:center;
+}
+#game div.op button{
+	width:200px;
+	height:60px;
+	border:10px solid rgb(254,123,163);
+	border-radius:50%;
+	background-color:rgb(253,213,227);
+	outline:none;
+	cursor:pointer;
+
+}
+#game div.op button:hover{
+	border-color:#ff0000;
+	background-color:#ff0000;
+	color:rgb(253,213,227);
+	font-size:36px;
+}
+#game div.op button.disabled{
+	border-color:#bbb;
+	color:#bbb;
+	background-color:#ccc;
+	font-size:28px;
+	cursor:default;
+}
+#game ul.guess{
+	width:220px;
+	height:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#game ul.guess li{
+	width:100%;
+	height:32%;
+	
+}
+#game ul.guess li div{
+	width:100%;
+	height:90%;
+    border:10px solid rgb(254,123,163);
+	border-radius:50%;
+	background-position:center;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	background-color:rgb(253,213,227);
+}
+#game ul.guess li div:hover{
+	background-color:rgb(254,123,163);
+	color:#fff;
+}
+div.guess0{
+	background-image:url("../images/0.png");
+}
+div.guess1{
+	background-image:url("../images/1.png");
+}
+div.guess2{
+	background-image:url("../images/2.png");
+}
+
+#game div.text{
+	text-align:center;
+	font-size:50px;
+	margin-top:10px;
+}

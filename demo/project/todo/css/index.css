@@ -1,0 +1,135 @@
+body {
+	font-family: "microsoft sans serif";
+	min-height: 420px;
+    background-color: #efefef;
+}
+/* header */
+
+header span {
+	display: block;
+	color: #fff;
+    background: linear-gradient(to bottom, rgb(240,60,0), rgb(163,41,0));;
+    font: 170% 'Carter One', Helvetica, Arial, sans-serif;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #000;
+}
+header nav ul.nav-menu-list {
+    text-align: center;
+    background-color: #444;
+    border: 1px solid #111;
+    border-left: none;
+    border-right: none;
+	
+}
+header nav li {
+    display: inline;
+}
+header nav a {
+    display: inline-block;
+    margin: 5px 2px;
+    padding: 6px 16px;
+    background-color: #252525;
+    border-radius: 20px;
+    font: bold 0.9em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
+header nav ul.nav-list a:hover {
+	text-decoration: none;
+}
+
+header nav ul.nav-menu-list a.active {
+	color:#4fbcef;
+}
+
+/* section part1 */
+
+
+section {
+	display: none;
+}
+section.active {
+	display: block;
+}
+section.list button[type=submit] {
+	width: 100%;
+	margin-left: -20px;
+	font-size: 14px;
+}
+.task-list {
+	padding: 10px 34px 0 17px;
+}
+.task-list li {
+
+    padding: 15px 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    font: 1.1em Helvetica, Arial, sans-serif;
+}
+.task-item {
+	margin-bottom: 1px;
+}
+.task-item:hover {
+	background: rgba(247, 244, 244, 0.44);
+}
+
+.task-item .task-item-btnColor {
+	color: #fff;
+}
+.task-detail,.task-detail-mask {
+	position: absolute;
+}
+.task-detail {
+	background: #fff;
+	padding: 10px;
+	bottom: 200px;
+	right: 280px;
+	width: 50%;
+	height: 50%;
+	color: #333;
+	
+}
+.task-detail,.task-detail-mask {
+	display: none;
+}
+.task-detail .content {
+	padding: 10px;
+	font: bold;
+	cursor: pointer;
+}
+.task-detail .desc textarea {
+	width: 100%;
+}
+.task-detail-mask {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(100,100,100,.5);
+}
+/* section part2  section part3*/
+
+
+
+.comm{
+	padding: 20px;
+}
+
+.comm .txt,.todo-btn,.showColor {
+	width: 100%;
+}
+.comm .txt {
+	padding-left: 10px;
+	font-size: 16px;
+}
+
+.comm .todo-btn {
+	margin-top:15px;
+	font-size: 18px;
+}
+section.settings input[type=text] {
+	font-size: 14px;
+	color: #ccc;
+}
+
+
